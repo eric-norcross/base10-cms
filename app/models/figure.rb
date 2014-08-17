@@ -14,11 +14,11 @@ class Figure < ActiveRecord::Base
   belongs_to                    :figurable, polymorphic: true
 
   has_many                      :images, as: :imageable, dependent: :destroy
-  accepts_nested_attributes_for :images, reject_if: proc { |attrs| attrs['asset'].blank? && attrs['asset_cache'].blank? }, allow_destroy: true
+  accepts_nested_attributes_for :images, allow_destroy: true, reject_if: proc { |attrs| attrs['asset'].blank? }
 
   validates                     :link, 
                                 allow_blank: true,
-                                format: { with: /(^$)|(^(http:\/\/|https:\/\/|\/))/ix }
+                                format: { with: /(^$)|(^([#]|http:\/\/|https:\/\/|\/))/ix }
   
   validates                     :images,
                                 presence: true

@@ -9,6 +9,10 @@ class Image < ActiveRecord::Base
 
   mount_uploader                :asset, ImageUploader
 
+
+  validates                     :asset,
+                                presence: true
+
   def self.default
     return ImageUploader.new
   end
