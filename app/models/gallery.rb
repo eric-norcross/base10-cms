@@ -1,4 +1,4 @@
-class Carousel < ActiveRecord::Base
+class Gallery < ActiveRecord::Base
   attr_accessible               :name, 
                                 :title,
 

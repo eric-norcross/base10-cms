@@ -13,11 +13,13 @@
 class Page < ActiveRecord::Base
   extend FriendlyId
 
-  friendly_id                   :title, use: [:slugged, :history]
+  friendly_id                   :name, use: [:slugged, :history]
 
   default_scope order('pages.title ASC')
+
                               ## DB Backed ##
-  attr_accessible               :title, 
+  attr_accessible               :name,
+                                :title, 
                                 :content,
                                 :slug,
 
@@ -31,31 +33,38 @@ class Page < ActiveRecord::Base
                               ## nested attributes ##
                                 :images_attributes,
                                 :figures_attributes,
-                                :carousels_attributes
+                                :galleries_attributes
 
   belongs_to                    :skin
   
   has_many                      :images, as: :imageable, dependent: :destroy
   accepts_nested_attributes_for :images, reject_if: proc { |attrs| attrs['asset'].blank? && attrs['asset_cache'].blank? }, allow_destroy: true
 
-  has_many                      :carousels, dependent: :destroy
-  accepts_nested_attributes_for :carousels, allow_destroy: true #, reject_if: lambda { |a| a[:image].blank?}
+  has_many                      :galleries, dependent: :destroy
+  accepts_nested_attributes_for :galleries, allow_destroy: true #, reject_if: lambda { |a| a[:image].blank?}
 
   has_many                      :figures, as: :figurable, dependent: :destroy
   accepts_nested_attributes_for :figures, reject_if: lambda { |a| a[:link].blank?}, allow_destroy: true
 
-  validates                     :title, 
+  validates                     :name, 
                                 presence: true,
-                                format: { with: /^[a-zA-Z\d\s]*$/ }
+                                format: { with: /^[0-9a-zA-Z \/_?:.,\s&-]*$/ }
+
+  validates                     :title, 
+                                allow_blank: true,
+                                format: { with: /^[0-9a-zA-Z \/_?:.,\s&-]*$/ }
 
   validates                     :skin,
                                 presence: true
 
-  def name
-    title.parameterize
-  end
-  
+  before_save                   :create_title
+
   private
   
+  def create_title
+    if title.blank?
+      self.title = name
+    end
+  end
   
 end

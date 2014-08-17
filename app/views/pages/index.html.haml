@@ -10,6 +10,7 @@
       %thead
         %tr
           %th Id
+          %th Name
           %th Title
           %th Template
           %th
@@ -18,8 +19,9 @@
         - @pages.each do |page|
           %tr
             %td= page.id
+            %td= page.name
             %td= page.title
-            %td= #page.skin.name
+            %td= page.skin.name
 
             %td.controls
               = link_to 'Show', page

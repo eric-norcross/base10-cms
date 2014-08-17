@@ -1,26 +1,28 @@
 .page#home
   %article
-    #main-carousel.carousel.slide
-      = @page.inspect
-      / Carousel Markers
-      / %ol.carousel-indicators
-      /   - @page.carousels[0].figures.each_with_index do |figure, index|
-      /     %li{class: ("active" if index == 0), "data-slide-to" => index, "data-target" => "#main-carousel"}
+    #main-gallery.gallery.slide
+      / = @page.inspect
+      / = image_tag @page.figures.first.images.first.asset_url.to_s
+      
+      Gallery Markers
+      %ol.gallery-indicators
+        - @page.galleries[0].figures.each_with_index do |figure, index|
+          %li{class: ("active" if index == 0), "data-slide-to" => index, "data-target" => "#main-gallery"}
 
-      / Carousel Items
-      / .carousel-inner
-      /   - @page.carousels[0].figures.each_with_index do |figure, index|
-      /     .item{class: ("active" if index == 0)}
-      /       = link_to figure.link do
-      /         = cl_image_tag(figure.images.first.asset.filename.to_s, alt: figure.images.first.asset.filename.to_s)
+      Gallery Items
+      .gallery-inner
+        - @page.galleries[0].figures.each_with_index do |figure, index|
+          .item{class: ("active" if index == 0)}
+            = link_to figure.link do
+              = cl_image_tag(figure.images.first.asset.filename.to_s, alt: figure.images.first.asset.filename.to_s)
 
-      / Carousel Nav
-      / %a.carousel-control.left{"data-slide" => "prev", :href => "#main-carousel"} ‹
-      / %a.carousel-control.right{"data-slide" => "next", :href => "#main-carousel"} ›
+      Gallery Nav
+      %a.gallery-control.left{"data-slide" => "prev", :href => "#main-gallery"} ‹
+      %a.gallery-control.right{"data-slide" => "next", :href => "#main-gallery"} ›
     
-    / %aside
-    /   %ul
-    /     - @page.figures.each do |figure|
-    /       %li
-    /         = link_to figure.link do
-    /           = image_tag figure.images.first.asset_url.to_s
+    %aside
+      %ul
+        - @page.figures.each do |figure|
+          %li
+            = link_to figure.link do
+              = image_tag figure.images.first.asset_url.to_s

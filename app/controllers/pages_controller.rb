@@ -36,9 +36,9 @@ class PagesController < ApplicationController
     @page = Page.new
 
     # 1.times { 
-    #   carousel = @page.carousels.build 
+    #   gallery = @page.galleries.build 
     #   3.times do
-    #     figure = carousel.figures.build
+    #     figure = gallery.figures.build
     #     figure.images.build
     #   end
     # }

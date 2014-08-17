@@ -1,0 +1,7 @@
+#admin
+  %h1 New Gallery
+
+  = render 'form'
+
+  .links
+    = link_to 'Back', manage_galleries_path, data: { confirm: 'Are you sure? Any unsaved changes will be lost.' }

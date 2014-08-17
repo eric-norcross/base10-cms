@@ -1,0 +1,18 @@
+= form_for @gallery, :html => { :multipart => true } do |f|
+  - if @gallery.errors.any?
+    #error-explanation
+      %h1
+        = "#{pluralize(@gallery.errors.count, "error")} prohibited this gallery from being saved:"
+      %ul
+        - @gallery.errors.full_messages.each do |msg|
+          %li
+            = msg
+
+  %fieldset{id: "gallery-fields"}
+    %legend
+      Galleries
+
+    = render "gallery_fields", f: f 
+
+  .actions
+    = f.submit 'Save'

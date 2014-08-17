@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140516012341) do
+ActiveRecord::Schema.define(:version => 20140817185643) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -39,14 +39,6 @@ ActiveRecord::Schema.define(:version => 20140516012341) do
     t.integer  "product_id"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
-  end
-
-  create_table "carousels", :force => true do |t|
-    t.string   "name"
-    t.string   "title"
-    t.integer  "page_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
   end
 
   create_table "ckeditor_assets", :force => true do |t|
@@ -87,6 +79,14 @@ ActiveRecord::Schema.define(:version => 20140516012341) do
   add_index "friendly_id_slugs", ["sluggable_id"], :name => "index_friendly_id_slugs_on_sluggable_id"
   add_index "friendly_id_slugs", ["sluggable_type"], :name => "index_friendly_id_slugs_on_sluggable_type"
 
+  create_table "galleries", :force => true do |t|
+    t.string   "name"
+    t.string   "title"
+    t.integer  "page_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "images", :force => true do |t|
     t.integer  "imageable_id"
     t.string   "imageable_type"
@@ -105,6 +105,7 @@ ActiveRecord::Schema.define(:version => 20140516012341) do
     t.datetime "updated_at", :null => false
     t.string   "slug"
     t.integer  "skin_id"
+    t.string   "name"
   end
 
   add_index "pages", ["slug"], :name => "index_pages_on_slug"

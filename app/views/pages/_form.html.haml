@@ -1,5 +1,5 @@
 - unique_id ||= randomNum
-- @carousel_options = { header: false, removable: false }
+- @gallery_options = { header: false, removable: false }
 - @figure_options = { header: true, removable: true }
 
 = form_for @page do |f|
@@ -21,6 +21,10 @@
       = f.select :skin_id, Skin.all.collect{|t| [t.title, t.id]}
 
     .field.required
+      = f.label :name
+      = f.text_field :name
+
+    .field
       = f.label :title
       = f.text_field :title
 
@@ -28,16 +32,18 @@
       = f.cktext_area :content
 
 
-  %fieldset{id: "carousels-fields"}
+  %fieldset{id: "galleries-fields"}
     %legend
-      Carousel
+      Gallery
 
-    #carousels
+    #galleries.singular-addable
       .addable-group
-        = f.fields_for :carousels, false do |carousel|
-          = render 'carousels/carousel_fields', f: carousel, options: @carousel_options
-      .addable.admin-button
-        = link_to_add_fields({ name: "Add Carousel", f: f, association: :carousels, nested: [ { association: :figures, nested: [ { association: :images } ] } ],  container: "carousels",  options: @carousel_options })
+        = f.fields_for :galleries, false do |gallery|
+          = render 'galleries/gallery_fields', f: gallery, options: @gallery_options
+      
+      - if f.object.galleries.blank?
+        .addable.admin-button
+          = link_to_add_fields({ name: "Add Gallery", f: f, association: :galleries, nested: [ { association: :figures, nested: [ { association: :images } ] } ],  container: "galleries",  options: @gallery_options })
 
 
   %fieldset{id: "figures-fields"}

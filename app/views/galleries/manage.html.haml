@@ -1,0 +1,27 @@
+#admin
+  %h1 Available Gallery
+
+  .links
+    = link_to 'Add a new Gallery', new_gallery_path
+
+  - if @galleries
+    %table
+      %thead
+        %tr
+          %th Id
+          %th Title
+          %th Figure Count
+          %th 
+      %tbody
+        - @galleries.each do |gallery|
+          %tr
+            %td= gallery.id
+            %td= gallery.title
+            %td= gallery.figures.length
+            %td.controls
+              = link_to 'Show', gallery
+              = link_to 'Edit', edit_gallery_path(gallery)
+              = link_to 'Destroy', gallery, method: :delete, data: { confirm: 'Are you sure?' }
+
+  .links
+    = link_to 'Add a new Gallery', new_gallery_path

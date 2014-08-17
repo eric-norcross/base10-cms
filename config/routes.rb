@@ -33,7 +33,7 @@ Base10cms::Application.routes.draw do
   # Search Routes
 
   # General Routes
-  resources :carousels
+  resources :galleries
   resources :figures
   resources :images
   resources :pages
