@@ -10,6 +10,7 @@
 - Set up the DB with `$ rake db:schema:load`
 - Run `$ unicorn -c config/unicorn.rb`
 - Set up an admin user by going to `localhost:8080/admins/sign_up`
+- When you're ready to launch the real site, uncomment and configure the rack-rewrite rules in `application.rb`
 - Enjoy
 
 

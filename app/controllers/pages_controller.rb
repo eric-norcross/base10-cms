@@ -3,7 +3,7 @@ class PagesController < ApplicationController
   skip_authorize_resource :only => [:home, :tab, :show]
 
   def home
-    @page = Page.find_by_name("home");
+    @page = Page.find_by_slug("home");
     render "layouts/skins/home"
   end 
 
