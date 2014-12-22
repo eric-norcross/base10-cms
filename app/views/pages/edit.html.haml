@@ -1,8 +1,10 @@
-#admin
-  %h1 Editing page
+%article#admin
+  %header
+    %h1 Editing Page:
   
   = render 'form'
 
-  .links
-    = link_to 'Show', @page, data: { confirm: 'Are you sure? Any unsaved changes will be lost.' }
-    = link_to 'Back', pages_path, data: { confirm: 'Are you sure? Any unsaved changes will be lost.' }
+  %footer
+    .links
+      = link_to 'Show', @page, data: { confirm: 'Are you sure? Any unsaved changes will be lost.' }
+      = link_to 'Back', pages_path, data: { confirm: 'Are you sure? Any unsaved changes will be lost.' }

@@ -42,7 +42,7 @@
           = render 'galleries/gallery_fields', f: gallery, options: @gallery_options
       
       - if f.object.galleries.blank?
-        .addable.admin-button
+        .addable.admin-submit-button
           = link_to_add_fields({ name: "Add Gallery", f: f, association: :galleries, nested: [ { association: :figures, nested: [ { association: :images } ] } ],  container: "galleries",  options: @gallery_options })
 
 
@@ -54,7 +54,7 @@
       .addable-group
         = f.fields_for :figures, false do |figure|
           = render 'figures/figure_fields', f: figure, options: @figure_options
-      .addable.admin-button
+      .addable.admin-submit-button
         = link_to_add_fields({ name: "Add Figure", f: f, association: :figures, nested: [ { association: :images } ], container: "figures", options: @figure_options })
       
   .actions

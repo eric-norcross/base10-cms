@@ -1,21 +1,33 @@
-#admin
-  %table
-    %thead
-      %tr
-        %th Caption:
-        %th Link:
-        %th Image:
-    %tbody
-      %tr
-        %td= @figure.caption
-        %td= @figure.link
-        %td
-          - if @figure.images.blank?
-            &mdash;
-          - else 
-            - @figure.images.each do |image|
-                = cl_image_tag(image.asset.filename.to_s, transformation: "thumb", alt: "#{@figure.caption} Image", title: @figure.caption)
+%article#admin
+  %header
+    %h1 Figures
 
-  .links
-    = link_to 'Edit', edit_figure_path(@figure)
-    = link_to 'Back', manage_figures_path
+  = render "admins/admin_nav"
+
+  %section
+    %header
+      .links
+        = link_to 'Edit', edit_figure_path(@figure)
+        = link_to 'Back', manage_figures_path
+
+    %table
+      %thead
+        %tr
+          %th Caption:
+          %th Link:
+          %th Image:
+      %tbody
+        %tr
+          %td= @figure.caption
+          %td= @figure.link
+          %td
+            - if @figure.images.blank?
+              &mdash;
+            - else 
+              - @figure.images.each do |image|
+                  = cl_image_tag(image.asset.filename.to_s, transformation: "thumb", alt: "#{@figure.caption} Image", title: @figure.caption)
+
+    %footer       
+      .links
+        = link_to 'Edit', edit_figure_path(@figure)
+        = link_to 'Back', manage_figures_path

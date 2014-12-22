@@ -1,10 +1,14 @@
-#admin
-  %h1 Available Figure
+%article#admin
+  %header
+    %h1 Manage Figure
 
-  .links
-    = link_to 'Add a new Figure', new_figure_path
+  = render "admins/admin_nav"
 
-  - if @figures
+  %section
+    %header
+      .links
+        = link_to 'Add a new Figure', new_figure_path
+
     %table
       %thead
         %tr
@@ -33,5 +37,6 @@
             /   = link_to 'Edit', edit_figure_path(figure)
             /   = link_to 'Destroy', figure, method: :delete, data: { confirm: 'Are you sure?' }
 
-  .links
-    = link_to 'Add a new Figure', new_figure_path
+    %footer       
+      .links
+        = link_to 'Add a new Figure', new_figure_path

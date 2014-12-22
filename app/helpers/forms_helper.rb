@@ -24,8 +24,8 @@ module FormsHelper
 
   def link_to_remove_fields(f) 
     f.hidden_field(:_destroy, class: "destroy") + 
-    link_to("#", class: "remove") do 
-      content_tag(:i, "", class: "icon-remove-circle icon-large", title: "Remove")
+    link_to("#", class: "remove-fields") do 
+      content_tag(:i, "", class: "fa fa-minus-circle", title: "Remove")
       # + content_tag(:span, " - Remove")
     end
   end

@@ -1,11 +1,14 @@
+%article#admin
+  %header
+    %h1 Manage Pages
 
-#admin
-  %h1 Listing pages
+  = render "admins/admin_nav"
 
-  .links
-    = link_to 'New Page', new_page_path
+  %section
+    %header
+      .links
+        =link_to 'New Page', new_page_path
 
-  - if @pages
     %table
       %thead
         %tr
@@ -28,5 +31,6 @@
               = link_to 'Edit', edit_page_path(page)
               = link_to 'Destroy', page, method: :delete, data: { confirm: 'Are you sure?' }
             
-  .links
-    = link_to 'New Page', new_page_path
+    %footer       
+      .links
+        = link_to 'New Page', new_page_path

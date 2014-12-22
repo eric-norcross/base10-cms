@@ -1,10 +1,14 @@
-#admin
-  %h1 Available Gallery
+%article#admin
+  %header
+    %h1 Manage Galleries
 
-  .links
-    = link_to 'Add a new Gallery', new_gallery_path
+  = render "admins/admin_nav"
 
-  - if @galleries
+  %section
+    %header
+      .links
+        = link_to 'Add a new Gallery', new_gallery_path
+        
     %table
       %thead
         %tr
@@ -23,5 +27,6 @@
               = link_to 'Edit', edit_gallery_path(gallery)
               = link_to 'Destroy', gallery, method: :delete, data: { confirm: 'Are you sure?' }
 
-  .links
-    = link_to 'Add a new Gallery', new_gallery_path
+    %footer       
+      .links
+        = link_to 'Add a new Gallery', new_gallery_path

@@ -1,4 +1,4 @@
-$(document).on("click", "a.remove", function(event) {
+$(document).on("click", "a.remove-fields", function(event) {
   var group = $(this).parent().parent().parent();
   var container = $(this).parent().parent();
   var field = container.find("input[type=hidden].destroy");
@@ -13,7 +13,7 @@ $(document).on("click", "a.remove", function(event) {
   return event.preventDefault();
 });
 
-$(document).on("click", ".admin-button", function(event) {
+$(document).on("click", ".admin-submit-button", function(event) {
   var a = $("a", $(this));
   var group = $("#" + a.attr("data-container"))
   var container = group.find(" > .addable-group");

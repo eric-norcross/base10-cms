@@ -1,262 +1,232 @@
 #admin {
   form {
-    div {
-      //margin: 10px;
-    }
+    margin: auto;
+    width: 90%;
 
-    input[type="submit"], 
-    .admin-button {
-      @include admin-button;
-    
-      &:hover {
-        background-color: $linkColor;
-        color: #fff;
-        cursor: pointer;
+    fieldset {
+      background-color: #fff;
+      border-color: $adminTableBorderColor;
+      border-style: solid;
+      border-width: 2px;
+      border-radius: 0 5px 5px 5px;
+          -moz-border-radius: 0 5px 5px 5px;
+          -webkit-border-radius: 0 5px 5px 5px;
+      margin: 50px;
+      margin-bottom: 15px;
+      padding: 8px;
 
-        a, a:hover {
-          color: #fff !important;
-          text-decoration: none;
+      legend {
+        background-color: #fff;
+        border-color: $adminTableBorderColor;
+        border-style: solid;
+        border-width: 2px 2px 0 2px;
+        border-radius: 5px 5px 0 0;
+          -moz-border-radius: 5px 5px 0 0;
+          -webkit-border-radius: 5px 5px 0 0;
+        color: $adminLabelColor;
+        font-family: $sans-serif;
+        font-size: 13px;
+        font-weight: bold;
+        margin-left: -10px;
+        margin-top: -36px;
+        padding: 8px 11px 5px 12px;
+        position: absolute;
+        text-transform: uppercase;
+      }
+
+
+      a.remove-fields {
+        i {
+          font-size: 13px;
         }
       }
-    }
 
-    input[type="submit"].disabled:hover,
-    .admin-button.disabled:hover {
-      background-color: inherit;
-      color: $linkColor;
-      cursor: inherit;
+      .field {
+        clear: both;
+        margin: 8px;
+        text-align: left;
 
-      a, a:hover {
-        color: inherit;
-        text-decoration: inherit;
+        label,
+        .split-label {
+          color: $adminLabelColor;
+          font-family: $sans-serif;
+          font-size: 11px;
+          font-weight: bold;
+        }
+
+        .split-label {
+          margin-left: 2px;
+        }
+
+        label {
+          float: left;
+          margin-right: 8px;
+          margin-top: 5px;
+          text-align: right;
+          width: 115px;
+        }
+        
+        input[type="email"],
+        input[type="number"],
+        input[type="password"],
+        input[type="search"],
+        input[type="tel"],
+        input[type="text"],
+        input[type="url"],
+
+        // Webkit & Gecko may change the display of these in the future
+        input[type="color"],
+        input[type="date"],
+        input[type="datetime"],
+        input[type="datetime-local"],
+        input[type="month"],
+        input[type="time"],
+        input[type="week"],
+        textarea {
+          border-color: #aaa;
+          border-style: solid;
+          border-width: 1px;
+          border-radius: 5px;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+          height: 19px;
+          padding: 1px 5px 2px 5px;
+          width: 270px;
+        }
+
+        textarea {
+          height: 150px;
+          padding: 5px;
+        }
+
+        select {
+          width: 282px;
+        }
       }
-    }
 
-    input[type="submit"] {
-      border-width: 2px;
-      color: $linkColor;
-      font-family: $sans-serif;
-      font-weight: bold;
-      margin-left: 0px;
-      padding: 6px 25px;
-      width: 100%;
-    }
+      .singular-addable, .multiple-addable {
+        .addable-group {
+          .active-fields {
+            
+          }
+        }
+      }
 
-    .disabled {
-      opacity:0.5;
-      filter:alpha(opacity=50); /* For IE8 and earlier */
-    }
+      .addable-group {
+        .image-field-group {
+          display: flex;
+          //justify-content: space-between;
 
-    img.toggle-image.disabled {
-      border-color: red;
-      // opacity:0.1;
-      // filter:alpha(opacity=10); /* For IE8 and earlier */
-      filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0 0 0 1 0 1 0 0 0 0 1 0 0 0 0 0 0 0 1 0\'/></filter></svg>#grayscale"); /* Firefox 10+ */
-      // filter: gray; /* IE6-9 */
-      // -webkit-filter: hue-rotate(180deg); /* Chrome 19+ & Safari 6+ */
-      // -webkit-transition: all .6s ease; /* Fade to color for Chrome and Safari */
-      // -webkit-backface-visibility: hidden; /* Fix for transition flickering */
-    }
 
-    select#component_ids {
-      height: 200px;
+          .image-box, .field, .remove-fields {
+            margin-right: 10px;
+          }
+
+          .field {
+            margin: 0px;
+            padding: 3px 0 0 0;
+          }
+
+          .image-box {
+            margin-top: -1px;
+            vertical-align: top;
+
+            img {
+              @include hint
+            }
+          }
+
+          .remove-fields {
+            margin-top: 5px;
+
+            a {
+              i {
+              }
+            }
+          }
+        }
+      }
+
+      .nested {
+        margin: 10px;
+
+        .actions {
+          input[type="submit"], 
+          .admin-submit-button {
+            border-width: 1px;
+          }
+        }
+
+        > .addable-group > div {
+          padding: 10px;
+        }
+
+        > .addable-group > div:nth-of-type(even) {
+          background: $lightEven;
+        }
+
+        > .addable-group > div:nth-of-type(odd) {
+          background: $lightOdd;
+        }
+
+        .addable-group {
+          .active-fields {
+            h2 {
+              font-family: $sans-serif;
+              font-size: 12px;
+              font-weight: bold;
+              text-transform: initial;
+            }
+          }
+
+          .active-fields:first-child {
+            -webkit-border-top-right-radius: 5px;
+            -webkit-border-top-left-radius: 5px;
+            -moz-border-radius-topright: 5px;
+            -moz-border-radius-topleft: 5px;
+            border-top-right-radius: 5px;
+            border-top-left-radius: 5px;
+          }
+
+          .active-fields:last-of-type {
+            -webkit-border-bottom-right-radius: 5px;
+            -webkit-border-bottom-left-radius: 5px;
+            -moz-border-radius-bottomright: 5px;
+            -moz-border-radius-bottomleft: 5px;
+            border-bottom-right-radius: 5px;
+            border-bottom-left-radius: 5px;
+          }
+        } 
+      }
     }
 
     .actions {
-      text-align: right;
-      /*width: 287px;*/
-    }
+      width: 95%;
+      margin: auto;
 
-    label {
-      float: left;
-      font-weight: bold;
-      margin-right: 8px;
-      margin-top: 5px;
-      text-align: right;
-      width: 90px;
-    }
+      input[type="submit"], 
+      .admin-submit-button {
+        @include admin-submit-button;
 
-    .checkbox {
-      margin: 8px;
-
-      label {
-        float: none;
-        font-weight: normal;
-        margin-top: 5px;
-        text-align: left;
-        white-space: nowrap;
-        width: 110px;
-      }
-    }
-    
-    fieldset {
-      border-color: #D8D4CB;
-      border-style: solid;
-      border-width: 2px;
-      margin: 50px;
-      margin-bottom: 15px;
-      padding: 10px 5px 5px 5px;
-
-      legend {
-        border-color: #D8D4CB;
-        border-style: solid;
-        border-width: 2px 2px 0 2px;
-        font-size: 10px;
+        border-width: 2px;
+        color: $gradient-top;
         font-weight: bold;
-        margin-left: -7px;
-        margin-top: -27px;
-        padding: 8px 11px 5px 12px;
-        text-transform: uppercase;
-      }
-    }
+        margin-left: 0px;
+        padding: 6px 0px;
+        width: 100%;
 
-    .image-field-group *,
-    .subcomponent-field-group *, {
-      /*float: left;
-      clear: none;*/
-      display: inline-block;
-      vertical-align: top;
-      border-width: 0px;
-      border-style: solid;
-      border-color: red;
-    }
+        &:hover {
+          background-color: $lightEven;
+          border-color: $gradient-top;
+          color: $gradient-top;
+          cursor: pointer;
 
-    .image-field-group {
-      padding-top: 10px; 
-
-      .field {
-        margin: 0px;
-        padding: 3px 0 0 0;
-      }
-
-      .image-box {
-        img {
-          border-color: #aaaaaa;
-          border-style: solid;
-          border-width: 1px;
-        }
-      }
-
-      .remove-fields {
-        a {
-          i {
-            padding: 4px 0 0 5px;
+          a, 
+          a:hover {
+            text-decoration: none;
           }
         }
       }
-    }
-
-
-    .inline {
-      .field {
-        display: inline-block;
-        float: left;
-        clear: none;
-      }
-    }
-
-    .field {
-      margin: 10px;
-    }
-
-    .field {
-      clear: both;
-
-      h1 {
-        color: #000 !important;
-      }
-
-      #include-finish-name {
-        display: inline;
-
-        label {
-          float: none;
-        }
-      }
-    }
-
-    .remove-fields {
-      display: inline;
-
-      a:hover {
-        text-decoration: none;
-      }
-    }
-
-    #dimensions {
-      .dimension-values {
-        .field {
-          display: inline-block;
-          float: left;
-          clear: none;
-          margin-right: 3px;
-
-          input[type="email"],
-          input[type="number"],
-          input[type="password"],
-          input[type="search"],
-          input[type="tel"],
-          input[type="text"],
-          input[type="url"],
-
-          // Webkit & Gecko may change the display of these in the future
-          input[type="color"],
-          input[type="date"],
-          input[type="datetime"],
-          input[type="datetime-local"],
-          input[type="month"],
-          input[type="time"],
-          input[type="week"] {
-            margin-right: 2px;
-            text-align: center;
-            width: 25px;
-          }
-        }
-      }
-    }
-
-    .tiered {
-      .level0 {
-        font-weight: bold;
-      }
-
-      option {
-        margin-top: 2px;
-      }
-    }
-
-    .images {
-      clear: both;
-    }
-
-    .addable {
-      .add-fields {
-        display: inline;
-      }
-    }
-
-    .column {
-      float: left;
-
-      .column-group {
-        margin: 10px 10px 25px 10px;
-      }
-    }
-
-    .nested {
-      margin: 0 20px;
-    }
-
-    .nested > .addable-group > div {
-      padding: 10px;
-    }
-
-    .nested > .addable-group > div:nth-of-type(even) {
-      background: $lightEven;
-    }
-
-    .nested > .addable-group > div:nth-of-type(odd) {
-      background: $lightOdd;
     }
   }
 }

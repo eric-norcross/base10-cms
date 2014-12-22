@@ -1,8 +1,10 @@
-#admin
-  %h1 Editing Gallery
+%article#admin
+  %header
+    %h1 Editing Gallery
 
   = render 'form'
 
-  .links
-    = link_to 'Show', @gallery, data: { confirm: 'Are you sure? Any unsaved changes will be lost.' }
-    = link_to 'Back', manage_galleries_path, data: { confirm: 'Are you sure? Any unsaved changes will be lost.' }
+  %footer
+    .links
+      = link_to 'Show', @gallery, data: { confirm: 'Are you sure? Any unsaved changes will be lost.' }
+      = link_to 'Back', manage_galleries_path, data: { confirm: 'Are you sure? Any unsaved changes will be lost.' }
